@@ -1,0 +1,41 @@
+import "utils.jyn"
+import "error_handling.jyn"
+
+var commands = {
+    "help": showHelp,
+    "exit": exitConsole,
+    "status": showStatus
+}
+
+func initConsole() {
+    println("Initializing Private Virtual Web Console...")
+}
+
+func startConsole() {
+    var running = true
+    while (running) {
+        var input = readInput("console> ")
+        if (input in commands) {
+            try {
+                commands[input]()
+            } catch (e) {
+                handleError(e)
+            }
+        } else {
+            println("Unknown command. Type 'help' for a list of commands.")
+        }
+    }
+}
+
+func showHelp() {
+    println("Available commands: help, exit, status")
+}
+
+func exitConsole() {
+    println("Exiting console...")
+    running = false
+}
+
+func showStatus() {
+    println("Console is running.")
+}
