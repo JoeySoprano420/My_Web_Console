@@ -1,14 +1,23 @@
 import "utils.jyn"
 import "error_handling.jyn"
+import "security.jyn"
 
-var commands = {
-    "help": showHelp,
-    "exit": exitConsole,
-    "status": showStatus
-}
+var commands = {}
 
 func initConsole() {
     println("Initializing Private Virtual Web Console...")
+    loadCommands()
+}
+
+func loadCommands() {
+    commands = {
+        "help": showHelp,
+        "exit": exitConsole,
+        "status": showStatus,
+        "secure": checkSecurityStatus,
+        "memory": showMemoryUsage,
+        "network": checkNetworkStatus
+    }
 }
 
 func startConsole() {
@@ -28,7 +37,7 @@ func startConsole() {
 }
 
 func showHelp() {
-    println("Available commands: help, exit, status")
+    println("Available commands: help, exit, status, secure, memory, network")
 }
 
 func exitConsole() {
@@ -38,4 +47,19 @@ func exitConsole() {
 
 func showStatus() {
     println("Console is running.")
+}
+
+func checkSecurityStatus() {
+    var status = getSecurityStatus()
+    println("Security Status:", status)
+}
+
+func showMemoryUsage() {
+    var usage = getMemoryUsage()
+    println("Memory Usage:", usage)
+}
+
+func checkNetworkStatus() {
+    var status = getNetworkStatus()
+    println("Network Status:", status)
 }
