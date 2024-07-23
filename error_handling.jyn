@@ -1,0 +1,24 @@
+import "trinary_logic.jyn"
+
+func handleError(e) {
+    var errorType = classifyError(e)
+    if (errorType == "critical") {
+        println("Critical error occurred:", e)
+        exitConsole()
+    } else if (errorType == "warning") {
+        println("Warning:", e)
+    } else {
+        println("Error:", e)
+    }
+}
+
+func classifyError(e) {
+    // Apply trinary logic to classify errors
+    if (e contains "network") {
+        return "critical"
+    } else if (e contains "file") {
+        return "warning"
+    } else {
+        return "info"
+    }
+}
