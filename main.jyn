@@ -3,8 +3,10 @@ import "error_handling.jyn"
 import "security.jyn"
 import "memory.jyn"
 import "networking.jyn"
+import "utils.jyn"
 
 func main() {
+    setupEnvironment()
     initConsole()
     startConsole()
 }
