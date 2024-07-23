@@ -1,0 +1,4 @@
+func readInput(prompt) {
+    println(prompt, end="")
+    return input()  # Placeholder for actual input reading logic
+}
