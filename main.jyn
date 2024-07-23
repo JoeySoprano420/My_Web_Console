@@ -1,0 +1,12 @@
+import "console.jyn"
+import "error_handling.jyn"
+import "security.jyn"
+import "memory.jyn"
+import "networking.jyn"
+
+func main() {
+    initConsole()
+    startConsole()
+}
+
+main()
