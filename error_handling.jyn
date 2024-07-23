@@ -4,7 +4,7 @@ func handleError(e) {
     var errorType = classifyError(e)
     if (errorType == "critical") {
         println("Critical error occurred:", e)
-        exitConsole()
+        tryRecovery(e)
     } else if (errorType == "warning") {
         println("Warning:", e)
     } else {
@@ -20,5 +20,17 @@ func classifyError(e) {
         return "warning"
     } else {
         return "info"
+    }
+}
+
+func tryRecovery(e) {
+    println("Attempting to recover from error:", e)
+    // Recovery logic using trinary decisions
+    var recoveryStatus = trinaryRecover(e)
+    if (recoveryStatus == "success") {
+        println("Recovery successful.")
+    } else {
+        println("Recovery failed. Exiting.")
+        exitConsole()
     }
 }
